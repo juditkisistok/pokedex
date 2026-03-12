@@ -1,16 +1,16 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import CardGrid from './CardGrid'
+import "./App.css";
+import CardGrid from "./CardGrid";
+import Filter from "./Filter";
+import { useState } from "react";
 
 function App() {
-
+  const [currentType, setCurrentType] = useState("all");
   return (
     <>
-      <CardGrid />
+      <Filter currentType={currentType} setCurrentType={setCurrentType} />
+      <CardGrid currentType={currentType} />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
