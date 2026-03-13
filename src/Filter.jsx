@@ -20,11 +20,6 @@ export default function Filter({ currentType, setCurrentType, favorites }) {
           </button>
         );
       })}
-      {numberOfFavorites > 0 && <button
-      className={`favorites-btn ${currentType === "favorites" ? "active" : ""}`}
-       onClick={() => setCurrentType("favorites")}>
-        Show favorites ({numberOfFavorites})
-      </button>}
     </div>
   );
 }

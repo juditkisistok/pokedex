@@ -74,7 +74,7 @@ header img {
   color: #fff;
 }
 
-/* Favorites button gradient border */
+/* Favorites bookmark tab */
 @property --border-angle {
   syntax: '<angle>';
   initial-value: 0deg;
@@ -85,26 +85,85 @@ header img {
   to { --border-angle: 360deg; }
 }
 
-.filter button.favorites-btn {
-  border: 2px solid transparent;
-  background:
-    linear-gradient(#f4f2ee, #f4f2ee) padding-box,
-    conic-gradient(
-      from var(--border-angle),
-      #A8D8A0, #F8C4A0, #A8C0F8, #FAE8A0, #F8B8C8, #C0A8F8, #A8D8A0
-    ) border-box;
-  color: #888;
+@keyframes bookmark-slide-in {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 
-.filter button.favorites-btn.active {
+@keyframes bookmark-slide-out {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+.favorites-bookmark.leaving {
+  animation: bookmark-slide-out 0.25s cubic-bezier(0.36, 0, 0.66, -0.56) forwards;
+}
+
+.favorites-bookmark {
+  position: fixed;
+  right: 0;
+  top: 9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem 0.75rem;
+  background: #fff;
+  border: 1.5px solid #ddd8d0;
+  border-right: none;
+  border-radius: 12px 0 0 12px;
+  cursor: pointer;
+  z-index: 100;
+  box-shadow: -3px 0 16px rgba(0, 0, 0, 0.08);
+  transition: box-shadow 0.2s;
+  animation: bookmark-slide-in 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.favorites-bookmark span {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(180deg);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: #aaa;
+  transition: color 0.2s;
+}
+
+.favorites-bookmark:hover {
+  box-shadow: -4px 0 16px rgba(0, 0, 0, 0.1);
+}
+
+.favorites-bookmark:hover span {
+  color: #555;
+}
+
+.favorites-bookmark.active {
+  border: 2px solid transparent;
+  border-right: none;
   background:
-    linear-gradient(#f4f2ee, #f4f2ee) padding-box,
+    linear-gradient(#fff, #fff) padding-box,
     conic-gradient(
       from var(--border-angle),
       #A8D8A0, #F8C4A0, #A8C0F8, #FAE8A0, #F8B8C8, #C0A8F8, #A8D8A0
     ) border-box;
-  color: #344054;
   animation: gradient-border 1.5s linear infinite;
+}
+
+.favorites-bookmark.active span {
+  color: #344054;
 }
 
 /* Card grid */
