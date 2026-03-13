@@ -7,12 +7,24 @@ import logo from "./assets/pokemon-logo.png";
 function App() {
   const [currentType, setCurrentType] = useState("all");
   const [favorites, setFavorites] = useState([]);
+  const [showBookmark, setShowBookmark] = useState(false);
+  const [bookmarkLeaving, setBookmarkLeaving] = useState(false);
 
   useEffect(() => {
     if (currentType === "favorites" && favorites.length === 0) {
       setCurrentType("all");
     }
   }, [favorites, currentType]);
+
+  useEffect(() => {
+    if (favorites.length > 0) {
+      setShowBookmark(true);
+      setBookmarkLeaving(false);
+
+    } else if (showBookmark) {
+      setBookmarkLeaving(true);
+    }
+  }, [favorites.length]);
 
   return (
     <>
@@ -26,16 +38,15 @@ function App() {
           favorites={favorites}
         />
       </div>
-      {favorites.length > 0 && (
-        <button
-          className={`favorites-bookmark ${currentType === "favorites" ? "active" : ""}`}
-          onClick={() =>
-            setCurrentType(currentType === "favorites" ? "all" : "favorites")
-          }
-        >
-          <span>♥ {favorites.length}</span>
-        </button>
-      )}
+      {showBookmark && (
+  <button
+    className={`favorites-bookmark ${currentType === "favorites" ? "active" : ""} ${bookmarkLeaving ? "leaving" : ""}`}
+    onAnimationEnd={() => { if (bookmarkLeaving) setShowBookmark(false); }}
+    onClick={() => setCurrentType(currentType === "favorites" ? "all" : "favorites")}
+  >
+    <span>♥ {favorites.length}</span>
+  </button>
+)}
       <CardGrid
         currentType={currentType}
         favorites={favorites}
