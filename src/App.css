@@ -74,6 +74,39 @@ header img {
   color: #fff;
 }
 
+/* Favorites button gradient border */
+@property --border-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes gradient-border {
+  to { --border-angle: 360deg; }
+}
+
+.filter button.favorites-btn {
+  border: 2px solid transparent;
+  background:
+    linear-gradient(#f4f2ee, #f4f2ee) padding-box,
+    conic-gradient(
+      from var(--border-angle),
+      #A8D8A0, #F8C4A0, #A8C0F8, #FAE8A0, #F8B8C8, #C0A8F8, #A8D8A0
+    ) border-box;
+  color: #888;
+}
+
+.filter button.favorites-btn.active {
+  background:
+    linear-gradient(#f4f2ee, #f4f2ee) padding-box,
+    conic-gradient(
+      from var(--border-angle),
+      #A8D8A0, #F8C4A0, #A8C0F8, #FAE8A0, #F8B8C8, #C0A8F8, #A8D8A0
+    ) border-box;
+  color: #344054;
+  animation: gradient-border 1.5s linear infinite;
+}
+
 /* Card grid */
 .card-grid {
   display: grid;

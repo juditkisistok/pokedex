@@ -1,8 +1,9 @@
 import { pokemons } from "./Data";
 import { pokemonTypes } from "./Data";
 
-export default function Filter({ currentType, setCurrentType }) {
+export default function Filter({ currentType, setCurrentType, favorites }) {
   const uniquePokemonTypes = [...new Set(pokemons.map((p) => p.type))];
+  const numberOfFavorites = favorites.length;
   return (
     <div className="filter">
       <button className={currentType === "all" ? "active" : ""} onClick={() => setCurrentType("all")}>All</button>
@@ -19,11 +20,11 @@ export default function Filter({ currentType, setCurrentType }) {
           </button>
         );
       })}
-      <button
-      className={currentType === "favorites" ? "active" : ""}
+      {numberOfFavorites > 0 && <button
+      className={`favorites-btn ${currentType === "favorites" ? "active" : ""}`}
        onClick={() => setCurrentType("favorites")}>
-        Show favorites
-      </button>
+        Show favorites ({numberOfFavorites})
+      </button>}
     </div>
   );
 }

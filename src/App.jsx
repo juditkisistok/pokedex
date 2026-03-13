@@ -12,7 +12,7 @@ function App() {
       <header>
         <img src="/pokemon-logo.png" alt="Pokedex" />
       </header>
-      <Filter currentType={currentType} setCurrentType={setCurrentType} />
+      <Filter currentType={currentType} setCurrentType={setCurrentType} favorites={favorites} />
       </div>
       <CardGrid
         currentType={currentType}
