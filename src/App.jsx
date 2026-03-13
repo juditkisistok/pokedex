@@ -27,13 +27,15 @@ function App() {
         />
       </div>
       {favorites.length > 0 && (
-  <button
-    className={`favorites-bookmark ${currentType === "favorites" ? "active" : ""}`}
-    onClick={() => setCurrentType(currentType === "favorites" ? "all" : "favorites")}
-  >
-    <span>♥ {favorites.length}</span>
-  </button>
-)}
+        <button
+          className={`favorites-bookmark ${currentType === "favorites" ? "active" : ""}`}
+          onClick={() =>
+            setCurrentType(currentType === "favorites" ? "all" : "favorites")
+          }
+        >
+          <span>♥ {favorites.length}</span>
+        </button>
+      )}
       <CardGrid
         currentType={currentType}
         favorites={favorites}
