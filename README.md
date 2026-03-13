@@ -7,8 +7,6 @@ A React-based Pokedex application that allows users to browse, filter, and favor
 - **Browse Pokémon**: View a collection of Pokémon with their stats, types, and images.
 - **Filter by Type**: Filter Pokémon by their elemental types (e.g., Fire, Water, Grass).
 - **Favorites System**: Add/remove Pokémon to/from your favorites list and view them separately.
-- **Responsive Design**: Works on desktop and mobile devices.
-- **Fast Performance**: Built with Vite for quick builds and hot module replacement.
 
 ## Tech Stack
 
