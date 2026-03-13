@@ -8,7 +8,7 @@ function App() {
   const [favorites, setFavorites] = useState([]);
   return (
     <>
-      <Filter setCurrentType={setCurrentType} />
+      <Filter currentType={currentType} setCurrentType={setCurrentType} />
       <CardGrid
         currentType={currentType}
         favorites={favorites}

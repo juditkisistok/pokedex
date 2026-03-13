@@ -11,7 +11,7 @@ export default function PokemonCard({
 }) {
   const typeColor = pokemonTypes.find((t) => t.name === type)?.color || "#000";
   return (
-    <div className="card">
+    <div className="card" style={{ '--type-color': typeColor }}>
       <img
         src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`}
         alt={name}
@@ -23,8 +23,14 @@ export default function PokemonCard({
       >
         {type}
       </p>
-      <p>{hp}</p>
-      <p>{attack}</p>
+      <div className="stats">
+        <span className="stat-label">HP</span>
+        <span className="stat-value">{hp}</span>
+      </div>
+      <div className="stats">
+        <span className="stat-label">ATK</span>
+        <span className="stat-value">{attack}</span>
+      </div>
       <button
         onClick={() =>
           setFavorites((prevFavorites) =>
