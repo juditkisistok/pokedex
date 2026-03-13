@@ -5,10 +5,15 @@ import { useState } from "react";
 
 function App() {
   const [currentType, setCurrentType] = useState("all");
+  const [favorites, setFavorites] = useState([]);
   return (
     <>
-      <Filter currentType={currentType} setCurrentType={setCurrentType} />
-      <CardGrid currentType={currentType} />
+      <Filter setCurrentType={setCurrentType} />
+      <CardGrid
+        currentType={currentType}
+        favorites={favorites}
+        setFavorites={setFavorites}
+      />
     </>
   );
 }
