@@ -23,6 +23,7 @@ export default function PokemonCard({
       >
         {type}
       </p>
+      <div className="stats-row">
       <div className="stats">
         <span className="stat-label">HP</span>
         <span className="stat-value">{hp}</span>
@@ -30,6 +31,7 @@ export default function PokemonCard({
       <div className="stats">
         <span className="stat-label">ATK</span>
         <span className="stat-value">{attack}</span>
+      </div>
       </div>
       <button
         onClick={() =>
@@ -45,7 +47,7 @@ export default function PokemonCard({
             width="20"
             height="20"
             viewBox="0 0 24 24"
-            fill="#ff4757"
+            fill="currentColor"
             xmlns="http://www.w3.org/2000/svg"
           >
             <path
@@ -60,7 +62,7 @@ export default function PokemonCard({
             height="20"
             viewBox="0 0 24 24"
             fill="none"
-            stroke="#ff4757"
+            stroke="currentColor"
             strokeWidth="2"
             xmlns="http://www.w3.org/2000/svg"
           >

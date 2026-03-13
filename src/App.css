@@ -4,43 +4,71 @@
   padding: 3.5rem 2rem;
 }
 
-/* Filter tabs */
-.filter {
+/* Topbar */
+.topbar {
   display: flex;
-  gap: 0;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.25rem;
   margin-bottom: 3rem;
-  border-bottom: 1px solid #e2ddd7;
-  overflow-x: auto;
-  scrollbar-width: none;
 }
 
-.filter::-webkit-scrollbar {
-  display: none;
+@media (max-width: 600px) {
+  .topbar {
+    justify-content: center;
+  }
+
+  .filter {
+    justify-content: center;
+  }
+}
+
+header {
+  flex-shrink: 0;
+}
+
+header img {
+  height: 76px;
+  width: auto;
+  display: block;
+}
+
+/* Filter pills */
+.filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 0;
 }
 
 .filter button {
-  padding: 0.7rem 1.1rem;
-  background: none;
-  border: none;
-  border-bottom: 2px solid transparent;
-  margin-bottom: -1px;
-  color: #999;
-  font-size: 0.8rem;
-  font-weight: 500;
-  letter-spacing: 0.3px;
+  padding: 0.3rem 0.85rem;
+  background: transparent;
+  border: 1.5px solid #ddd8d0;
+  border-radius: 50px;
+  color: #aaa;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.4px;
   text-transform: capitalize;
   cursor: pointer;
-  transition: color 0.15s, border-color 0.15s;
+  transition:
+    color 0.15s,
+    border-color 0.15s,
+    background 0.15s;
   white-space: nowrap;
 }
 
 .filter button:hover {
-  color: #1a1a1a;
+  border-color: #bbb;
+  color: #666;
 }
 
 .filter button.active {
-  color: #1a1a1a;
-  border-bottom-color: #1a1a1a;
+  background: var(--type-color, #344054);
+  border-color: var(--type-color, #344054);
+  color: #fff;
 }
 
 /* Card grid */
@@ -58,12 +86,15 @@
   padding: 1.5rem 1.25rem 1.25rem;
   text-align: center;
   position: relative;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 10px 28px color-mix(in srgb, var(--type-color, #888) 30%, transparent);
+  box-shadow: 0 10px 28px
+    color-mix(in srgb, var(--type-color, #888) 30%, transparent);
 }
 
 .card img {
@@ -75,12 +106,12 @@
 }
 
 .card h1 {
-  font-size: 0.95rem;
-  font-weight: 600;
-  margin: 0.5rem 0 0.6rem;
-  color: #111;
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin: 0.5rem 0 0.15rem;
+  color: #344054;
   text-transform: capitalize;
-  letter-spacing: -0.1px;
+  letter-spacing: -0.4px;
 }
 
 .card p {
@@ -93,20 +124,23 @@
 .type-badge {
   display: inline-flex;
   align-items: center;
-  gap: 0.35rem;
-  padding: 0.28rem 0.7rem;
+  gap: 0.25rem;
+  padding: 0.12rem 0.45rem;
   background: transparent;
   border: 1.5px solid;
   border-radius: 50px;
-  font-size: 0.72rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  margin-bottom: 1rem;
+  margin-bottom: 0;
+}
+
+.card .type-badge {
+  font-size: 0.6rem;
 }
 
 .type-badge::before {
-  content: '';
+  content: "";
   width: 5px;
   height: 5px;
   border-radius: 50%;
@@ -115,28 +149,39 @@
 }
 
 /* Stats */
+.stats-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-top: 1px solid #f0ece6;
+  margin-top: 1rem;
+}
+
 .stats {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  padding: 0.5rem 0;
-  border-top: 1px solid #f0ece6;
+  gap: 0.2rem;
+  padding: 0.7rem 0.5rem;
+}
+
+.stats:first-child {
+  border-right: 1px solid #f0ece6;
 }
 
 .stat-label {
-  font-family: 'DM Mono', monospace;
-  font-size: 0.68rem;
-  color: #bbb;
+  font-family: "DM Mono", monospace;
+  font-size: 0.62rem;
+  color: #c0bbb5;
   text-transform: uppercase;
-  letter-spacing: 0.6px;
-  font-weight: 500;
+  letter-spacing: 0.5px;
+  font-weight: 400;
 }
 
 .stat-value {
-  font-family: 'DM Mono', monospace;
-  font-size: 0.95rem;
-  font-weight: 500;
-  color: #111;
+  font-family: "DM Mono", monospace;
+  font-size: 1.05rem;
+  font-weight: 400;
+  color: #999;
   letter-spacing: -0.3px;
 }
 
@@ -155,10 +200,13 @@
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  transition: background 0.15s, transform 0.15s;
+  color: var(--type-color, #ff4757);
+  transition:
+    background 0.15s,
+    transform 0.15s;
 }
 
 .card button:hover {
-  background: rgba(255, 71, 87, 0.08);
+  background: color-mix(in srgb, var(--type-color, #ff4757) 12%, transparent);
   transform: scale(1.1);
 }

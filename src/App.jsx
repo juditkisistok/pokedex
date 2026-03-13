@@ -8,7 +8,12 @@ function App() {
   const [favorites, setFavorites] = useState([]);
   return (
     <>
+    <div className="topbar">
+      <header>
+        <img src="/pokemon-logo.png" alt="Pokedex" />
+      </header>
       <Filter currentType={currentType} setCurrentType={setCurrentType} />
+      </div>
       <CardGrid
         currentType={currentType}
         favorites={favorites}
